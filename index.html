@@ -306,6 +306,9 @@
       .topline .label { letter-spacing: .08em; }
       .stamp { width: 4.1rem; height: 4.1rem; }
     }
+ .portrait:not([hidden]) ~ .cover-footer .cover-caption {
+      display: none;
+    }
   </style>
 </head>
 
@@ -330,8 +333,8 @@
         <div class="stamp label" aria-hidden="true">VIP<br>ONLY</div>
 
         <div class="cover-footer">
-          <p class="label cover-kicker">Звезда на обложке</p>
-          <div aria-live="polite" aria-atomic="true">
+           <p class="label cover-kicker cover-caption">Звезда на обложке</p>
+          <div class="cover-caption" aria-live="polite" aria-atomic="true">
             <p class="cover-name" id="cover-name">Твоё имя здесь</p>
             <p class="cover-story" id="cover-story">Редакция держит первую полосу для тебя.</p>
           </div>
