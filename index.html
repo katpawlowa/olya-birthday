@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff3f7">
+  <meta name="description" content="OLYA’S BIRTHDAY: The Rich Girl Issue — цифровой спецвыпуск вечеринки.">
+  <title>OLYA’S BIRTHDAY — The Rich Girl Issue</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff3f7;
+      --ink: #251320;
+      --wine: #841044;
+      --muted: #694955;
+      --pink: #ffb9d7;
+      --line: #e8c5d4;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: radial-gradient(ellipse at top, #ffd4e6, transparent 42rem), var(--paper);
+      font: 1rem/1.55 var(--sans);
+    }
+
+    button, select, input, textarea { font: inherit; }
+    button, select { cursor: pointer; }
+
+    :focus-visible {
+      outline: 3px solid var(--wine);
+      outline-offset: 4px;
+    }
+
+    .shell {
+      width: min(100% - 2rem, 70rem);
+      margin-inline: auto;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-block: 1.25rem 1.5rem;
+      padding-bottom: .7rem;
+      border-bottom: 1px solid var(--wine);
+      color: var(--wine);
+    }
+
+    .label {
+      margin: 0;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+      gap: clamp(1.5rem, 5vw, 4.5rem);
+      align-items: center;
+    }
+
+    .cover {
+      position: relative;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 30rem;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      padding: clamp(1rem, 4vw, 2rem);
+      color: #fff3f7;
+      background: radial-gradient(ellipse at 55% 40%, #a81e60 0%, #580d35 55%, #240d21 100%);
+      box-shadow: 0 1rem 2.5rem #74143c38;
+    }
+
+    .cover::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(180deg, #23051dd9, #23051d00 38%, #23051d00 48%, #23051df5);
+    }
+
+    .cover-header, .cover-footer { position: relative; }
+
+    .portrait {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+    }
+
+    .monogram {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #ffc0db80;
+      font: italic clamp(6rem, 22vw, 13rem)/1 var(--serif);
+      letter-spacing: -.08em;
+      pointer-events: none;
+    }
+
+    .cover-kicker { color: #ffd4e6; }
+
+    .masthead {
+      margin: .45rem 0 0;
+      font: bold clamp(2.35rem, 5.3vw, 4.5rem)/.86 var(--serif);
+      letter-spacing: -.075em;
+    }
+
+    .masthead span { display: block; }
+
+    .subtitle {
+      margin: .6rem 0 0;
+      color: #ffd4e6;
+      font: italic clamp(1.1rem, 3vw, 1.6rem)/1.15 var(--serif);
+    }
+
+    .stamp {
+      position: absolute;
+      top: 41%;
+      right: 7%;
+      display: grid;
+      place-content: center;
+      width: 4.8rem;
+      height: 4.8rem;
+      border: 1px solid #ffd4e6;
+      border-radius: 50%;
+      background: #5d0d36;
+      color: #fff3f7;
+      text-align: center;
+      transform: rotate(12deg);
+    }
+
+    .cover-name {
+      margin: .3rem 0;
+      overflow-wrap: anywhere;
+      font: bold clamp(2rem, 4.5vw, 3.65rem)/.98 var(--serif);
+      letter-spacing: -.055em;
+    }
+
+    .cover-story {
+      max-width: 29ch;
+      margin: .65rem 0 0;
+      font-size: .95rem;
+      line-height: 1.35;
+    }
+
+    .cover-teaser {
+      display: inline-block;
+      margin: 1rem 0 0;
+      padding-top: .55rem;
+      border-top: 1px solid #ffb9d7;
+      color: #ffd4e6;
+    }
+
+    .section-label { color: var(--wine); }
+
+    .headline, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -.055em;
+    }
+
+    .headline {
+      max-width: 11ch;
+      margin: .45rem 0 .9rem;
+      font-size: clamp(2.7rem, 6.3vw, 5.6rem);
+      line-height: .94;
+    }
+
+    .headline em { color: var(--wine); }
+
+    .intro {
+      max-width: 38ch;
+      margin: 0 0 1.4rem;
+      color: var(--muted);
+    }
+
+    .field {
+      display: grid;
+      gap: .4rem;
+      margin: 0 0 .9rem;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    select, input, textarea {
+      width: 100%;
+      min-height: 3rem;
+      padding: .65rem .8rem;
+      border: 1px solid #a46d84;
+      border-radius: .45rem;
+      background: #fffafd;
+      color: var(--ink);
+      font-weight: 400;
+      font-size: 1rem;
+    }
+
+    textarea { resize: vertical; }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 1rem;
+      margin-top: 1rem;
+    }
+
+    a {
+      color: var(--wine);
+      font-weight: 700;
+      text-underline-offset: .2em;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: clamp(2rem, 6vw, 4rem);
+    }
+
+    .card {
+      min-width: 0;
+      padding: clamp(1.15rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      background: #fffafd;
+    }
+
+    .mission-card { background: #ffe2ee; }
+
+    h2 {
+      margin: .35rem 0 .65rem;
+      font-size: clamp(1.85rem, 3.6vw, 2.8rem);
+      line-height: 1.02;
+    }
+
+    .card p:not(.label) { color: var(--muted); }
+
+    .button {
+      min-height: 2.85rem;
+      padding: .65rem 1rem;
+      border: 1px solid var(--wine);
+      border-radius: 2rem;
+      background: var(--wine);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .button:hover:not(:disabled) { background: #620d35; }
+    .button:disabled { opacity: .65; cursor: not-allowed; }
+
+    .mission-result {
+      margin-top: 1rem;
+      padding: .8rem 0 .15rem 1rem;
+      border-left: 2px solid var(--wine);
+    }
+
+    .mission-result h3 {
+      margin: 0;
+      font-size: 1.55rem;
+      line-height: 1.05;
+    }
+
+    .mission-result p { margin: .45rem 0 0; }
+
+    .hint {
+      margin: .65rem 0 0;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    .status { margin: .75rem 0 0; }
+    .status:empty { margin: 0; }
+
+    .footer {
+      margin-top: 2rem;
+      padding: .85rem 0 1.25rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    @media (max-width: 740px) {
+      .hero, .features { grid-template-columns: minmax(0, 1fr); }
+      .cover { width: min(100%, 29rem); min-height: 25rem; margin-inline: auto; }
+      .headline { max-width: 14ch; }
+      .masthead { font-size: clamp(2.35rem, 9vw, 4rem); }
+    }
+
+    @media (max-width: 350px) {
+      .topline .label { letter-spacing: .08em; }
+      .stamp { width: 4.1rem; height: 4.1rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="shell topline">
+    <p class="label">Olya’s Birthday</p>
+    <p class="label">Спецвыпуск № 01 · 2000s edition</p>
+  </header>
+
+  <main class="shell">
+    <div class="hero">
+      <section class="cover" aria-label="Обложка спецвыпуска">
+        <div class="monogram" id="monogram" aria-hidden="true">OB</div>
+        <img class="portrait" id="portrait" alt="" hidden>
+
+        <div class="cover-header">
+          <p class="label cover-kicker">Коллекционный выпуск</p>
+          <p class="masthead"><span>OLYA’S</span><span>BIRTHDAY</span></p>
+          <p class="subtitle">The Rich Girl Issue</p>
+        </div>
+
+        <div class="stamp label" aria-hidden="true">VIP<br>ONLY</div>
+
+        <div class="cover-footer">
+          <p class="label cover-kicker">Звезда на обложке</p>
+          <div aria-live="polite" aria-atomic="true">
+            <p class="cover-name" id="cover-name">Твоё имя здесь</p>
+            <p class="cover-story" id="cover-story">Редакция держит первую полосу для тебя.</p>
+          </div>
+          <p class="label cover-teaser">Внутри: блеск, сплетни и вспышки</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="welcome-title">
+        <p class="label section-label">Из редакции · только для своих</p>
+        <h1 class="headline" id="welcome-title">Ты — <em>на обложке.</em></h1>
+        <p class="intro">Сегодня отмечаем день рождения Оли, а первая полоса — твоя. Выбери своё имя и узнай, под каким псевдонимом тебя поймали папарацци.</p>
+
+        <label class="field" for="guest">
+          Твоё имя в списке гостей
+          <select id="guest">
+            <option value="">Выбери своё имя</option>
+          </select>
+        </label>
+
+        <nav class="nav-links" aria-label="В этом выпуске">
+          <a href="#paparazzi">Задание от папарацци</a>
+          <a href="#letter">Письмо редактору</a>
+        </nav>
+
+        <noscript><p class="hint">Для персональных обложек, заданий и отправки письма включи JavaScript.</p></noscript>
+      </section>
+    </div>
+
+    <div class="features">
+      <section class="card mission-card" id="paparazzi" aria-labelledby="mission-heading">
+        <p class="label section-label">Рубрика 01 · Paparazzi desk</p>
+        <h2 id="mission-heading">Задание от папарацци</h2>
+        <p>Одна маленькая миссия на вечер. Если не твоё — можно пропустить.</p>
+        <button class="button" id="mission-button" type="button">Вытянуть задание</button>
+
+        <div aria-live="polite" aria-atomic="true">
+          <div class="mission-result" id="mission-result" hidden>
+            <h3 id="mission-title"></h3>
+            <p id="mission-text"></p>
+          </div>
+        </div>
+
+        <p class="hint">Спрашивай разрешения перед тем, как фотографировать или выкладывать кадр.</p>
+      </section>
+
+      <section class="card" id="letter" aria-labelledby="letter-heading">
+        <p class="label section-label">Рубрика 02 · Letters to the editor</p>
+        <h2 id="letter-heading">Письмо главному редактору</h2>
+        <p>Пожелание, ваше любимое воспоминание или светский «инсайд» — для Оли, не для публичной ленты.</p>
+
+        <form id="wish-form" method="post" hidden>
+          <label class="field">
+            Подпись (необязательно)
+            <input name="signature" type="text" maxlength="80" placeholder="Можно оставить пустой">
+          </label>
+
+          <label class="field">
+            Твоё письмо
+            <textarea name="message" rows="4" maxlength="1500" required placeholder="Дорогая Оля…"></textarea>
+          </label>
+
+          <button class="button" id="wish-submit" type="submit">Отправить Оле</button>
+          <p class="hint" id="wish-privacy">Письмо передаётся через Formspree. Имя с обложки к нему не добавляется.</p>
+        </form>
+
+        <p class="hint" id="form-note">Приём писем пока не подключён.</p>
+        <p class="status" id="wish-status" role="status"></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="shell footer">
+    <p class="label">© Olya’s Birthday · The Rich Girl Issue</p>
+  </footer>
+
+  <script>
+    // Вставь сюда полный адрес своей формы Formspree. Пустая строка отключает форму.
+    const formEndpoint = "";
+
+    // Пока фото нет, обложка показывает инициалы. Путь к фото задаётся относительно index.html.
+    const guests = [
+      {
+        id: "lena",
+        name: "Лена",
+        alias: "Лена де Шампань",
+        initials: "ЛШ",
+        photo: "",
+        headline: "Эксклюзив: замечена на вечеринке года. От комментариев отказалась, от шампанского — нет."
+      },
+      {
+        id: "masha",
+        name: "Маша",
+        alias: "Мария фон Глянец",
+        initials: "МГ",
+        photo: "",
+        headline: "Её выход обсуждают больше, чем сам дресс-код. Редакция не спорит."
+      },
+      {
+        id: "katya",
+        name: "Кэтти Бриллиант" === "Катя" ? "Кэтти Бриллиант" : "Катя",
+        alias: "Кэтти Бриллиант",
+        initials: "КБ",
+        photo: "",
+        headline: "По словам очевидцев, вспышки включились ещё до того, как она вошла в зал."
+      }
+    ];
+
+    const missions = [
+      {
+        title: "Кадр с главной героиней",
+        text: "Поймай момент, когда Оля свободна, и предложи ей сделать совместное фото для условной обложки."
+      },
+      {
+        title: "Самый дерзкий райдер",
+        text: "Спроси у двух гостий, что было бы обязательным в их звёздном райдере. Выбери ответ, достойный первой полосы."
+      },
+      {
+        title: "Три кадра в стиле нулевых",
+        text: "Найди три детали в духе нулевых: блеск для губ, стразы, мини-сумку или что-то неожиданное. С разрешения хозяек собери из них три кадра."
+      },
+      {
+        title: "Светская хроника",
+        text: "Придумай с соседкой по столику заголовок о вашем появлении на вечеринке. Чем драматичнее, тем лучше."
+      },
+      {
+        title: "Обложка на двоих",
+        text: "Пригласи гостью, с которой ещё не знакома, сделать фото как у звёздного дуэта. Заодно придумайте себе название."
+      }
+    ];
+
+    const guestSelect = document.querySelector("#guest");
+    const coverName = document.querySelector("#cover-name");
+    const coverStory = document.querySelector("#cover-story");
+    const portrait = document.querySelector("#portrait");
+    const monogram = document.querySelector("#monogram");
+
+    for (const guest of guests) {
+      const option = document.createElement("option");
+      option.value = guest.id;
+      option.textContent = guest.name;
+      guestSelect.append(option);
+    }
+
+    function renderCover() {
+      const guest = guests.find((item) => item.id === guestSelect.value);
+      coverName.textContent = guest ? guest.alias : "Твоё имя здесь";
+      coverStory.textContent = guest ? guest.headline : "Редакция держит первую полосу для тебя.";
+      monogram.textContent = guest ? guest.initials : "OB";
+
+      portrait.hidden = true;
+      monogram.hidden = false;
+
+      if (!guest || !guest.photo) {
+        portrait.removeAttribute("src");
+        return;
+      }
+
+      if (portrait.getAttribute("src") !== guest.photo) {
+        portrait.setAttribute("src", guest.photo);
+      }
+
+      if (portrait.complete && portrait.naturalWidth > 0) {
+        portrait.hidden = false;
+        monogram.hidden = true;
+      }
+    }
+
+    portrait.addEventListener("load", () => {
+      const guest = guests.find((item) => item.id === guestSelect.value);
+      if (guest && guest.photo && portrait.getAttribute("src") === guest.photo && portrait.naturalWidth > 0) {
+        portrait.hidden = false;
+        monogram.hidden = true;
+      }
+    });
+
+    portrait.addEventListener("error", () => {
+      portrait.hidden = true;
+      monogram.hidden = false;
+    });
+
+    guestSelect.addEventListener("change", renderCover);
+    renderCover();
+
+    const missionButton = document.querySelector("#mission-button");
+    const missionResult = document.querySelector("#mission-result");
+    const missionTitle = document.querySelector("#mission-title");
+    const missionText = document.querySelector("#mission-text");
+
+    missionButton.addEventListener("click", () => {
+      const mission = missions[Math.floor(Math.random() * missions.length)];
+      missionTitle.textContent = mission.title;
+      missionText.textContent = mission.text;
+      missionResult.hidden = false;
+      missionButton.textContent = "Задание получено";
+      missionButton.disabled = true;
+    });
+
+    const wishForm = document.querySelector("#wish-form");
+    const wishSubmit = document.querySelector("#wish-submit");
+    const wishStatus = document.querySelector("#wish-status");
+    const formNote = document.querySelector("#form-note");
+    const messageField = wishForm.elements.namedItem("message");
+    const signatureField = wishForm.elements.namedItem("signature");
+
+    if (formEndpoint) {
+      wishForm.action = formEndpoint;
+      wishForm.hidden = false;
+      formNote.hidden = true;
+    }
+
+    messageField.addEventListener("input", () => messageField.setCustomValidity(""));
+
+    wishForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!formEndpoint || wishSubmit.disabled) return;
+
+      const message = messageField.value.trim();
+
+      if (!message) {
+        messageField.setCustomValidity("Напиши хотя бы пару слов.");
+        messageField.reportValidity();
+        return;
+      }
+
+      const data = new FormData();
+      data.set("message", message);
+
+      const signature = signatureField.value.trim();
+      if (signature) data.set("signature", signature);
+
+      wishSubmit.disabled = true;
+      wishStatus.textContent = "Отправляем письмо…";
+
+      try {
+        const response = await fetch(formEndpoint, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: data
+        });
+
+        if (!response.ok) throw new Error("Submission failed");
+
+        wishForm.reset();
+        wishStatus.textContent = "Письмо отправлено. Спасибо!";
+      } catch {
+        wishStatus.textContent = "Не удалось подтвердить отправку. Текст остался в форме — можно попробовать ещё раз.";
+      } finally {
+        wishSubmit.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
