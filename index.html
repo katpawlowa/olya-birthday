@@ -311,6 +311,9 @@
     .cover.has-photo .cover-footer {
       display: none;
     }
+      .cover:has(.portrait[src]:not([src=""]))::after {
+      display: none;
+    }
   </style>
 </head>
 
