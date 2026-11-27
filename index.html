@@ -377,28 +377,17 @@
         <p class="hint">Спрашивай разрешения перед тем, как фотографировать или выкладывать кадр.</p>
       </section>
 
-      <section class="card" id="letter" aria-labelledby="letter-heading">
+<section class="card" id="letter" aria-labelledby="letter-heading">
         <p class="label section-label">Рубрика 02 · Letters to the editor</p>
         <h2 id="letter-heading">Письмо главному редактору</h2>
-        <p>Пожелание, ваше любимое воспоминание или светский «инсайд» — для Оли, не для публичной ленты.</p>
+        <p>Оставь Оле пожелание, любимое воспоминание или светский «инсайд». Подписываться необязательно.</p>
 
-        <form id="wish-form" method="post" hidden>
-          <label class="field">
-            Подпись (необязательно)
-            <input name="signature" type="text" maxlength="80" placeholder="Можно оставить пустой">
-          </label>
+        <a class="button" href="https://forms.yandex.ru/u/6b093b55902902ebf690a5d8" target="_blank" rel="noopener"
+           style="display: inline-block; text-decoration: none;">
+          Оставить пожелание
+        </a>
 
-          <label class="field">
-            Твоё письмо
-            <textarea name="message" rows="4" maxlength="1500" required placeholder="Дорогая Оля…"></textarea>
-          </label>
-
-          <button class="button" id="wish-submit" type="submit">Отправить Оле</button>
-          <p class="hint" id="wish-privacy">Письмо передаётся через Formspree. Имя с обложки к нему не добавляется.</p>
-        </form>
-
-        <p class="hint" id="form-note">Приём писем пока не подключён.</p>
-        <p class="status" id="wish-status" role="status"></p>
+        <p class="hint">Яндекс Форма откроется в новой вкладке. Ответ не появится на сайте.</p>
       </section>
     </div>
   </main>
@@ -408,8 +397,6 @@
   </footer>
 
   <script>
-    // Вставь сюда полный адрес своей формы Formspree. Пустая строка отключает форму.
-    const formEndpoint = "";
 
     // Пока фото нет, обложка показывает инициалы. Путь к фото задаётся относительно index.html.
     const guests = [
@@ -529,59 +516,6 @@
       missionButton.disabled = true;
     });
 
-    const wishForm = document.querySelector("#wish-form");
-    const wishSubmit = document.querySelector("#wish-submit");
-    const wishStatus = document.querySelector("#wish-status");
-    const formNote = document.querySelector("#form-note");
-    const messageField = wishForm.elements.namedItem("message");
-    const signatureField = wishForm.elements.namedItem("signature");
-
-    if (formEndpoint) {
-      wishForm.action = formEndpoint;
-      wishForm.hidden = false;
-      formNote.hidden = true;
-    }
-
-    messageField.addEventListener("input", () => messageField.setCustomValidity(""));
-
-    wishForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!formEndpoint || wishSubmit.disabled) return;
-
-      const message = messageField.value.trim();
-
-      if (!message) {
-        messageField.setCustomValidity("Напиши хотя бы пару слов.");
-        messageField.reportValidity();
-        return;
-      }
-
-      const data = new FormData();
-      data.set("message", message);
-
-      const signature = signatureField.value.trim();
-      if (signature) data.set("signature", signature);
-
-      wishSubmit.disabled = true;
-      wishStatus.textContent = "Отправляем письмо…";
-
-      try {
-        const response = await fetch(formEndpoint, {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: data
-        });
-
-        if (!response.ok) throw new Error("Submission failed");
-
-        wishForm.reset();
-        wishStatus.textContent = "Письмо отправлено. Спасибо!";
-      } catch {
-        wishStatus.textContent = "Не удалось подтвердить отправку. Текст остался в форме — можно попробовать ещё раз.";
-      } finally {
-        wishSubmit.disabled = false;
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
