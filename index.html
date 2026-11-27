@@ -306,7 +306,7 @@
       .topline .label { letter-spacing: .08em; }
       .stamp { width: 4.1rem; height: 4.1rem; }
     }
- .portrait:not([hidden]) ~ .cover-footer .cover-caption {
+ .cover.has-photo .cover-caption {
       display: none;
     }
   </style>
@@ -503,6 +503,7 @@
 
     function renderCover() {
       const guest = guests.find((item) => item.id === guestSelect.value);
+portrait.closest(".cover").classList.toggle("has-photo", Boolean(guest?.photo?.trim()));
       coverName.textContent = guest ? guest.alias : "Твоё имя здесь";
       coverStory.textContent = guest ? guest.headline : "Редакция держит первую полосу для тебя.";
       monogram.textContent = guest ? guest.initials : "OB";
